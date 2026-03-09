@@ -61,7 +61,8 @@ export function usePWA() {
       if (VAPID_PUBLIC_KEY) {
         const subscription = await reg.pushManager.subscribe({
           userVisibleOnly: true,
-            applicationServerKey: urlBase64ToUint8Array(VAPID_PUBLIC_KEY).buffer as ArrayBuffer,        });
+          applicationServerKey: urlBase64ToUint8Array(VAPID_PUBLIC_KEY).buffer as ArrayBuffer,
+        });
         await fetch(`${API}/lockin/web-push-token`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
