@@ -61,8 +61,7 @@ export function usePWA() {
       if (VAPID_PUBLIC_KEY) {
         const subscription = await reg.pushManager.subscribe({
           userVisibleOnly: true,
-          applicationServerKey: urlBase64ToUint8Array(VAPID_PUBLIC_KEY),
-        });
+            applicationServerKey: urlBase64ToUint8Array(VAPID_PUBLIC_KEY).buffer as ArrayBuffer,        });
         await fetch(`${API}/lockin/web-push-token`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -98,9 +97,9 @@ export function usePWA() {
   };
 }
 
-function urlBase64ToUint8Array(base64String: string): ArrayBuffer {
+function urlBase64ToUint8Array(base64String: string): Uint8Array {
   const padding = '='.repeat((4 - base64String.length % 4) % 4);
   const base64 = (base64String + padding).replace(/-/g, '+').replace(/_/g, '/');
   const rawData = window.atob(base64);
-  return Uint8Array.from([...rawData].map(c => c.charCodeAt(0))).buffer;
+  return new Uint8Array(Array.from(rawData).map(c => c.charCodeAt(0)));
 }
