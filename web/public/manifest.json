@@ -1,0 +1,39 @@
+{
+  "name": "LOCK IN — Mission Control",
+  "short_name": "LOCK IN",
+  "description": "AI-powered daily scheduling and focus system",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#060d12",
+  "theme_color": "#060d12",
+  "orientation": "portrait-primary",
+  "categories": ["productivity", "utilities"],
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Plan Tomorrow",
+      "short_name": "Plan",
+      "url": "/?tab=plan",
+      "description": "Voice-plan tomorrow's schedule"
+    },
+    {
+      "name": "Lock In Now",
+      "short_name": "Lock In",
+      "url": "/?lockin=1",
+      "description": "Activate Lock In mode"
+    }
+  ]
+}
